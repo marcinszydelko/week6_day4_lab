@@ -2,6 +2,9 @@ document.addEventListener('DOMContentLoaded', () => {
   console.log('JavaScript loaded');
   const form = document.querySelector('#new-item-form');
   form.addEventListener('submit', handleFormSubmit)
+
+  const button = document.querySelector('#deleteAll');
+  button.addEventListener('click', handleButtonDelete)
 });
 
 const handleFormSubmit = function (event){
@@ -15,6 +18,7 @@ const handleFormSubmit = function (event){
 
 
   const titleListItem = document.createElement('li');
+  titleListItem.classList.add('deleteItems');
   const book = document.createElement('article');
 
   const title = document.createElement('p');
@@ -32,6 +36,11 @@ const handleFormSubmit = function (event){
 
   titleListItem.appendChild(book);
 
-  const unorderList = document.querySelector('#reading-list');
-  unorderList.appendChild(titleListItem);
+  const unorderedList = document.querySelector('#reading-list');
+  unorderedList.appendChild(titleListItem);
 };
+
+const handleButtonDelete = function () {
+  const form = document.querySelector('.deleteItems');
+  form.remove();
+}
